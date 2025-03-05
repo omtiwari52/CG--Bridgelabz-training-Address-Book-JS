@@ -73,40 +73,49 @@ class AddressBook {
 
     // View person by city
     viewByCity = (city) => {
-        return this.contacts.reduce((result,contact) =>{
-            if(!result[contact.city]){
-                result[contact.city] =[];
+        return this.contacts.reduce((result, contact) => {
+            if (!result[contact.city]) {
+                result[contact.city] = [];
             }
             result[contact.city].push(contact)
             return result;
-        },{});
+        }, {});
     }
 
     // view person by state
     viewByState = (state) => {
-        return this.contacts.reduce((result,contact) =>{
-            if(!result[contact.state]){
-                result[contact.state] =[];
+        return this.contacts.reduce((result, contact) => {
+            if (!result[contact.state]) {
+                result[contact.state] = [];
             }
             result[contact.state].push(contact)
             return result;
-        },{});
+        }, {});
     }
 
     // Count contact by city or Count by state
-    countByCity = ()=>{
-        return this.contacts.reduce((result,contact)=>{
+    countByCity = () => {
+        return this.contacts.reduce((result, contact) => {
             result[contact.city] = (result[contact.city] || 0) + 1;
             return result;
-        },{});
+        }, {});
     }
 
-    countByState = ()=>{
-        return this.contacts.reduce((result,contact)=>{
+    countByState = () => {
+        return this.contacts.reduce((result, contact) => {
             result[contact.state] = (result[contact.state] || 0) + 1;
             return result;
-        },{});
+        }, {});
     }
+
+    // sort the contact data by the name 
+    sortContactsByName = () => {
+        return this.contacts.sort((a, b) => {
+            const nameA = (a.firstName + " " + a.lastName).toLowerCase();
+            const nameB = (b.firstName + " " + b.lastName).toLowerCase();
+            return nameA.localeCompare(nameB);
+        });
+    };
 
 
     // Method to get the contact
