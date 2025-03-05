@@ -57,18 +57,40 @@ class AddressBook {
     }
 
     // Method to count the number of contact in the address book
-    getContactCount() {
+    getContactCount = () => {
         return this.contacts.reduce((count) => count + 1, 0);
     }
 
     // Method to search for a person using city or state
-    searchByCity(city) {
+    searchByCity = (city) => {
         return this.contacts.filter(contact => contact.city === city);
     }
 
     // Search contacts by State
-    searchByState(state) {
+    searchByState = (state) => {
         return this.contacts.filter(contact => contact.state === state);
+    }
+
+    // View person by city
+    viewByCity = (city) => {
+        return this.contacts.reduce((result,contact) =>{
+            if(!result[contact.city]){
+                result[contact.city] =[];
+            }
+            result[contact.city].push(contact)
+            return result;
+        });
+    }
+
+    // view person by state
+    viewByState = (state) => {
+        return this.contacts.reduce((result,contact) =>{
+            if(!result[contact.state]){
+                result[contact.state] =[];
+            }
+            result[contact.state].push(contact)
+            return result;
+        });
     }
 
 
