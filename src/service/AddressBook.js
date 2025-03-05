@@ -47,6 +47,12 @@ class AddressBook {
         return this.contacts.splice(index, 1)[0];
     }
 
+    // Method to count the number of contact in the address book
+    getContactCount() {
+        return this.contacts.reduce((count) => count + 1, 0);
+    }
+    
+
 
     // Method to get the contact
     getContact = () => {
