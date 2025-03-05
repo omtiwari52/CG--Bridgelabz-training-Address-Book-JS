@@ -117,7 +117,20 @@ class AddressBook {
         });
     };
 
+    // Sort by city state and zip
 
+    sortByCity() {
+        return this.contacts.sort((a, b) => a.city.localeCompare(b.city));
+    }
+
+    sortByState() {
+        return this.contacts.sort((a, b) => a.state.localeCompare(b.state));
+    }
+
+    sortByZip() {
+        return this.contacts.sort((a, b) => a.zip - b.zip);
+    }
+    
     // Method to get the contact
     getContact = () => {
         return this.contacts;
